@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b73">
+<title>Game Edukasi Islam - Mu'amalah</title>
+<style>
+:root{--navy:#123b73;--blue:#1763ad;--green:#08a85a;--yellow:#ffc928;--ink:#132744;--pale:#f3f8ff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#eaf2fc;color:var(--ink)}
+header{background:linear-gradient(110deg,#102d59,#1763ad);color:white;padding:15px 4%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:1.1rem;font-weight:800}.brand small{display:block;font-size:.75rem;font-weight:500;opacity:.9}
+nav{display:flex;gap:8px;flex-wrap:wrap}button{font:inherit;cursor:pointer;border:0;border-radius:13px;padding:11px 16px;font-weight:750}
+nav button{background:transparent;color:white}nav button.active,nav button:hover{background:var(--green)}
+main{max-width:1200px;margin:20px auto;padding:0 14px}
+.hero{background:linear-gradient(120deg,#d5f4ff,#fff2b8);border:2px solid white;border-radius:24px;padding:25px;display:grid;grid-template-columns:1.4fr .6fr;gap:20px;align-items:center;box-shadow:0 5px 18px #173c6c18}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.02;margin:8px 0;color:#123b73}.hero p{font-size:1.05rem;max-width:650px}.hero-art{font-size:clamp(4rem,10vw,7rem);text-align:center;filter:drop-shadow(0 7px 4px #0002)}
+.kicker{color:#087d49;font-weight:850;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem}
+.primary{background:var(--green);color:white}.yellow{background:var(--yellow);color:#252525}.secondary{background:#e6effc;color:var(--navy)}.danger{background:#ffe5e5;color:#9e1b1b}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}.card{background:white;border-radius:18px;padding:18px;border:1px solid #d5e2f4;box-shadow:0 4px 12px #123b7310}.card h3{margin:4px 0 8px}.emoji{font-size:1.8rem}
+.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.panel{background:white;border:1px solid #d1dff1;border-radius:20px;overflow:hidden;box-shadow:0 4px 12px #123b7310;margin-bottom:16px}.panel-head{background:var(--blue);color:white;padding:13px 18px;font-size:1.15rem;font-weight:850;display:flex;justify-content:space-between;align-items:center;gap:8px}.panel-body{padding:18px}
+.progress{height:9px;background:#e6edf7;border-radius:20px;overflow:hidden;margin:10px 0 18px}.progress span{display:block;height:100%;background:var(--green);width:0;transition:width .25s}
+.option{display:block;width:100%;text-align:left;margin:9px 0;background:#f7faff;border:2px solid #d8e3f3;color:var(--ink);font-weight:600}.option:hover{border-color:#6ca5e9}.option.selected{border-color:#1689e8;background:#e8f4ff}.option.correct{border-color:#08a85a;background:#e1ffec}.option.wrong{border-color:#e04c4c;background:#fff0f0}
+.feedback{min-height:28px;font-weight:700;margin:10px 0}.hidden{display:none!important}.lesson-list{display:grid;gap:10px}.lesson{display:flex;gap:12px;align-items:flex-start;background:#f5f9ff;padding:12px;border-radius:12px}.lesson b{display:block}.badge{background:#fff1b8;border-radius:20px;padding:5px 10px;font-size:.85rem;font-weight:800}
+.result{text-align:center;padding:22px}.result .big{font-size:4rem}.result h2{color:#087d49}.statrow{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:15px}.stat{background:#fff4c8;border-radius:14px;padding:12px 18px;min-width:105px}.stat strong{display:block;font-size:1.5rem;color:#087d49}
+footer{text-align:center;color:#526a88;padding:24px 12px;font-size:.9rem}
+input[type=text]{width:100%;padding:12px;border:2px solid #d8e3f3;border-radius:12px;font:inherit;margin:8px 0}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero-art{display:none}.cards,.layout{grid-template-columns:1fr}.hero{padding:20px}.panel-body{padding:14px}header{padding:13px 4%}nav{width:100%;justify-content:space-between}nav button{padding:8px 10px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">🕌 Game Edukasi Islam<small>Belajar • Bermain • Berkah</small></div>
+  <nav>
+    <button class="active" data-page="home">🏠 Beranda</button>
+    <button data-page="materi">📖 Materi</button>
+    <button data-page="game">🎮 Game</button>
+    <button data-page="riwayat">📊 Riwayat</button>
+  </nav>
+</header>
+<main>
+<section id="home" class="page">
+  <div class="hero">
+    <div><div class="kicker">Belajar agama dengan cara menyenangkan</div><h1>Game Edukasi<br><span style="color:#f0a900">Mu’amalah</span></h1>
+    <p>Pelajari aturan Islam dalam hubungan antarmanusia lewat materi singkat, kuis, dan tantangan situasi sehari-hari.</p>
+    <button class="yellow" onclick="showPage('game')">▶ Mulai Game</button>
+    <button class="secondary" onclick="showPage('materi')">Baca Materi</button></div>
+    <div class="hero-art" aria-hidden="true">📚<br>🤝</div>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="emoji">📖</div><h3>Pelajari Materi</h3><p>Kenali pengertian, tujuan, prinsip, dan larangan dalam mu’amalah.</p></div>
+    <div class="card"><div class="emoji">🎯</div><h3>Naik Level</h3><p>Jawab pertanyaan dan kumpulkan skor dari setiap tantangan.</p></div>
+    <div class="card"><div class="emoji">🏆</div><h3>Lihat Hasil</h3><p>Periksa nilai akhir dan riwayat permainan yang tersimpan di perangkat.</p></div>
+  </div>
+</section>
+
+<section id="materi" class="page hidden">
+  <div class="panel"><div class="panel-head">📖 Materi Mu’amalah</div><div class="panel-body">
+    <div class="lesson-list">
+      <div class="lesson"><span class="emoji">💡</span><div><b>1. Pengertian</b>Mu’amalah adalah aturan Islam yang mengatur hubungan antarmanusia, terutama dalam urusan ekonomi, jual beli, kerja sama, dan kegiatan sosial.</div></div>
+      <div class="lesson"><span class="emoji">🎯</span><div><b>2. Tujuan</b>Menciptakan hubungan yang baik, menjaga keadilan, menghindari penipuan dan perselisihan, serta mewujudkan saling menguntungkan.</div></div>
+      <div class="lesson"><span class="emoji">🤝</span><div><b>3. Prinsip-prinsip</b>Jujur, adil, saling menolong dalam kebaikan, bertanggung jawab, dan melakukan transaksi atas dasar kerelaan tanpa paksaan.</div></div>
+      <div class="lesson"><span class="emoji">🛍️</span><div><b>4. Contoh sehari-hari</b>Membeli barang dengan harga yang disepakati, mengembalikan pinjaman, membayar utang, dan berdagang tanpa menipu.</div></div>
+      <div class="lesson"><span class="emoji">🚫</span><div><b>5. Perbuatan yang dilarang</b>Penipuan, kecurangan timbangan, mengambil hak orang lain, serta riba dan gharar yang dilarang syariat.</div></div>
+      <div class="lesson"><span class="emoji">📜</span><div><b>6. Dalil</b>QS. An-Nisa ayat 29 mengajarkan agar harta tidak diperoleh dengan cara batil dan perdagangan dilakukan atas dasar suka sama suka.</div></div>
+      <div class="lesson"><span class="emoji">✅</span><div><b>7. Kesimpulan</b>Mu’amalah mengajarkan kejujuran, keadilan, tanggung jawab, dan saling ridha dalam hubungan antarmanusia.</div></div>
+    </div>
+    <p><button class="primary" onclick="showPage('game')">Saya Siap Bermain →</button></p>
+  </div></div>
+</section>
+
+<section id="game" class="page hidden">
+  <div class="layout">
+    <div class="panel"><div class="panel-head"><span id="levelTitle">🎮 Level 1: Pilihan Ganda</span><span class="badge" id="scoreBadge">Skor: 0</span></div>
+      <div class="panel-body">
+        <div style="display:flex;justify-content:space-between;gap:10px"><b id="qCount">Pertanyaan 1 dari 8</b><span id="levelBadge">Level 1/3</span></div>
+        <div class="progress"><span id="progressBar"></span></div>
+        <h3 id="question">Pertanyaan muncul di sini</h3>
+        <div id="options"></div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <button id="checkBtn" class="primary" onclick="checkAnswer()">✓ Periksa Jawaban</button>
+        <button id="nextBtn" class="yellow hidden" onclick="nextQuestion()">Pertanyaan Berikutnya →</button>
+      </div>
+    </div>
+    <div>
+      <div class="panel"><div class="panel-head">⭐ Cara Bermain</div><div class="panel-body">
+        <p>1. Pilih satu jawaban yang paling tepat.</p><p>2. Tekan <b>Periksa Jawaban</b> untuk melihat hasilnya.</p><p>3. Jawaban benar mendapat <b>100 poin</b>.</p><p>4. Selesaikan semua pertanyaan untuk melihat nilai akhir.</p>
+        <hr style="border:0;border-top:1px solid #e1eaf5;margin:18px 0">
+        <b>Tips:</b> Baca materi terlebih dahulu agar lebih mudah menjawab.
+      </div></div>
+      <div class="panel"><div class="panel-head">💚 Ingat Prinsipnya</div><div class="panel-body">Jujur dalam transaksi, adil terhadap orang lain, saling membantu, dan jangan mengambil hak orang lain.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="riwayat" class="page hidden">
+  <div class="panel"><div class="panel-head">📊 Riwayat Permainan</div><div class="panel-body">
+    <p>Hasil permainan disimpan secara lokal pada browser/perangkat ini.</p><div id="historyList"></div>
+    <button class="danger" onclick="clearHistory()">Hapus Riwayat</button>
+  </div></div>
+</section>
+<section id="finish" class="page hidden">
+  <div class="panel"><div class="panel-head">🏆 Hasil Permainan</div><div class="result">
+    <div class="big" id="resultEmoji">🎉</div><h2 id="resultTitle">Hebat!</h2><p id="resultText">Kamu sudah menyelesaikan permainan.</p>
+    <div class="statrow"><div class="stat">Skor Akhir<strong id="finalScore">0</strong></div><div class="stat">Jawaban Benar<strong id="correctCount">0/8</strong></div><div class="stat">Persentase<strong id="percent">0%</strong></div></div>
+    <p id="resultTip"></p><button class="primary" onclick="startGame()">🔄 Main Lagi</button> <button class="secondary" onclick="showPage('riwayat')">📊 Lihat Riwayat</button>
+  </div></div>
+</section>
+</main>
+<footer>🌟 Bisa dimainkan di HP dan komputer • Tidak perlu akun • Semangat belajar mu’amalah!</footer>
+<script>
+const questions = [
+ {level:1,q:"Apa yang dimaksud dengan mu’amalah?",a:["Ibadah khusus kepada Allah saja","Aturan hubungan antarmanusia dalam kehidupan, termasuk urusan ekonomi","Ilmu tentang tata surya","Aturan berpakaian saja"],c:1,e:"Mu’amalah mengatur hubungan antarmanusia, termasuk jual beli dan kerja sama.",topic:"Pengertian"},
+ {level:1,q:"Sikap yang benar ketika menjual barang adalah ...",a:["Menyembunyikan cacat barang","Mengurangi timbangan","Menjelaskan keadaan barang dengan jujur","Memaksa pembeli"],c:2,e:"Kejujuran penting agar transaksi tidak merugikan orang lain.",topic:"Kejujuran"},
+ {level:1,q:"Transaksi yang baik seharusnya dilakukan atas dasar ...",a:["Paksaan","Ancaman","Suka sama suka dan kesepakatan","Kebohongan"],c:2,e:"Transaksi hendaknya dilakukan dengan kerelaan, bukan paksaan.",topic:"Saling ridha"},
+ {level:2,q:"Kamu meminjam buku teman. Apa yang sebaiknya dilakukan?",a:["Mengembalikannya sesuai janji","Menyimpannya selamanya","Menjualnya tanpa izin","Merusaknya"],c:0,e:"Mengembalikan barang pinjaman adalah bentuk tanggung jawab.",topic:"Tanggung jawab"},
+ {level:2,q:"Pedagang mengurangi berat barang agar mendapat untung lebih. Sikap ini termasuk ...",a:["Kejujuran","Kecurangan","Tolong-menolong","Keadilan"],c:1,e:"Mengurangi timbangan adalah kecurangan dan merugikan pembeli.",topic:"Larangan"},
+ {level:2,q:"Contoh tolong-menolong dalam kebaikan adalah ...",a:["Membantu teman yang kesulitan membawa buku","Menyembunyikan barang teman","Mengajak teman berbohong","Mengambil uang tanpa izin"],c:0,e:"Membantu teman yang membutuhkan merupakan contoh tolong-menolong.",topic:"Tolong-menolong"},
+ {level:3,q:"Kamu menemukan uang di kelas dan tidak tahu pemiliknya. Apa tindakan terbaik?",a:["Langsung mengambilnya","Membaginya dengan teman","Menyerahkannya kepada guru agar pemiliknya ditemukan","Membuangnya"],c:2,e:"Menyerahkan kepada guru membantu menjaga hak orang lain.",topic:"Pengambilan keputusan"},
+ {level:3,q:"Seorang penjual memberi informasi palsu tentang kualitas barang. Perbuatan ini bertentangan dengan prinsip ...",a:["Kejujuran","Kesabaran saja","Kebersihan","Keberanian"],c:0,e:"Informasi palsu adalah bentuk penipuan dan bertentangan dengan kejujuran.",topic:"Kejujuran"}
+];
+let index=0,score=0,correct=0,selected=null,locked=false;
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='riwayat')renderHistory();window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function startGame(){index=0;score=0;correct=0;selected=null;locked=false;showPage('game');renderQuestion();}
+function renderQuestion(){
+ const q=questions[index];selected=null;locked=false;
+ document.getElementById('levelTitle').textContent=`🎮 Level ${q.level}: ${q.level===1?'Pilihan Ganda':q.level===2?'Penerapan Prinsip':'Pilihan Situasi'}`;
+ document.getElementById('scoreBadge').textContent='Skor: '+score;
+ document.getElementById('qCount').textContent=`Pertanyaan ${index+1} dari ${questions.length}`;
+ document.getElementById('levelBadge').textContent=`Level ${q.level}/3`;
+ document.getElementById('progressBar').style.width=((index)/questions.length*100)+'%';
+ document.getElementById('question').textContent=q.q;
+ document.getElementById('feedback').textContent='';
+ document.getElementById('options').innerHTML='';
+ q.a.forEach((answer,i)=>{const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+answer;b.onclick=()=>choose(i,b);document.getElementById('options').appendChild(b)});
+ document.getElementById('checkBtn').classList.remove('hidden');document.getElementById('nextBtn').classList.add('hidden');
+}
+function choose(i,btn){if(locked)return;selected=i;document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');}
+function checkAnswer(){
+ if(selected===null){document.getElementById('feedback').textContent='Pilih jawaban terlebih dahulu ya!';return}
+ locked=true;const q=questions[index],opts=[...document.querySelectorAll('.option')];
+ opts.forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add('correct');else if(i===selected)b.classList.add('wrong')});
+ if(selected===q.c){score+=100;correct++;document.getElementById('feedback').textContent='✅ Benar! '+q.e}else{document.getElementById('feedback').textContent='💡 Belum tepat. '+q.e}
+ document.getElementById('scoreBadge').textContent='Skor: '+score;document.getElementById('progressBar').style.width=((index+1)/questions.length*100)+'%';
+ document.getElementById('checkBtn').classList.add('hidden');document.getElementById('nextBtn').classList.remove('hidden');document.getElementById('nextBtn').textContent=index===questions.length-1?'Lihat Hasil 🏆':'Pertanyaan Berikutnya →';
+}
+function nextQuestion(){if(index<questions.length-1){index++;renderQuestion()}else finishGame()}
+function finishGame(){
+ const pct=Math.round(correct/questions.length*100),entry={date:new Date().toLocaleString('id-ID'),score,correct,total:questions.length,pct};
+ let history=JSON.parse(localStorage.getItem('muamalahHistory')||'[]');history.unshift(entry);localStorage.setItem('muamalahHistory',JSON.stringify(history.slice(0,20)));
+ document.getElementById('finalScore').textContent=score;document.getElementById('correctCount').textContent=`${correct}/${questions.length}`;document.getElementById('percent').textContent=pct+'%';
+ document.getElementById('resultEmoji').textContent=pct>=80?'🏆':pct>=50?'🎉':'📚';document.getElementById('resultTitle').textContent=pct>=80?'Hebat, kamu menguasai materi!':pct>=50?'Bagus, terus berlatih!':'Jangan menyerah!';
+ document.getElementById('resultText').textContent=`Kamu menjawab ${correct} dari ${questions.length} pertanyaan dengan benar.`;
+ document.getElementById('resultTip').textContent=pct>=80?'Pertahankan sikap jujur, adil, dan bertanggung jawab dalam kehidupan sehari-hari.':'Baca kembali materi lalu coba bermain lagi untuk meningkatkan skor.';
+ showPage('finish');
+}
+function renderHistory(){const el=document.getElementById('historyList'),h=JSON.parse(localStorage.getItem('muamalahHistory')||'[]');if(!h.length){el.innerHTML='<p>Belum ada riwayat. Selesaikan satu permainan untuk melihat hasilnya.</p>';return}el.innerHTML=h.map((x,i)=>`<div class="lesson"><span class="emoji">🏅</span><div><b>Permainan ${h.length-i} — Skor ${x.score}</b>${x.date}<br>Jawaban benar: ${x.correct}/${x.total} (${x.pct}%)</div></div>`).join('')}
+function clearHistory(){if(confirm('Hapus semua riwayat permainan di perangkat ini?')){localStorage.removeItem('muamalahHistory');renderHistory()}}
+renderQuestion();
+</script>
+</body>
+</html>
